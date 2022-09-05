@@ -1,6 +1,8 @@
-const ToDoItem = (title, description, dueDate, priority) => {
+const ToDoItem = (id, title, description, dueDate, priority) => {
 
     return {
+        get id() { return id },
+
         get title() { return title },
         set title(value) { title = value },
 
@@ -15,7 +17,7 @@ const ToDoItem = (title, description, dueDate, priority) => {
     };
 };
 
-const Project = (title) => {
+const Project = (id, title) => {
 
     let tasks = [];
 
@@ -24,10 +26,12 @@ const Project = (title) => {
     };
 
     return {
+        get id() { return id },
+
         get title() { return title },
         set title(value) { title = value },
 
         get tasks() { return tasks },
-        set addTask (task) { addTask(task) },
+        set addTask(task) { addTask(task) },
     };
 };
