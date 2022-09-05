@@ -1,4 +1,4 @@
-const counter = () => {
+export const counter = () => {
     let count = 0;
 
     const getUniqueId = () => {
