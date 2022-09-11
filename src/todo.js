@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-const ToDoItem = (id, title, description, dueDate, priority) => {
+export const ToDoItem = (id, title, description, dueDate, priority) => {
 
     let completed = false;
 
@@ -30,7 +30,7 @@ const ToDoItem = (id, title, description, dueDate, priority) => {
     };
 };
 
-const Project = (id, title) => {
+export const Project = (id, title) => {
 
     let tasks = [];
 
