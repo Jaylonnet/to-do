@@ -1,4 +1,10 @@
+import { format } from "date-fns";
+
 const ToDoItem = (id, title, description, dueDate, priority) => {
+
+    let completed = false;
+
+    const checkIfCompleted = () => { return completed }
 
     return {
         get id() { return id },
@@ -13,7 +19,14 @@ const ToDoItem = (id, title, description, dueDate, priority) => {
         set dueDate(value) { dueDate = value },
 
         get priority() { return priority },
-        set priority(value) { priority = value }
+        set priority(value) { priority = value },
+
+        /**
+         * @param {boolean} value
+         */
+        set completedStatus(value) { completed = value },
+
+        checkIfCompleted,
     };
 };
 
@@ -32,6 +45,9 @@ const Project = (id, title) => {
         set title(value) { title = value },
 
         get tasks() { return tasks },
+        /**
+         * @param {any} task
+         */
         set addTask(task) { addTask(task) },
     };
 };
