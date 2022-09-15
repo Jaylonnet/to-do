@@ -9,31 +9,49 @@
 </head>
 
 <body>
-    <div class="container">
-        <div id="sidenav">
-            <div id="logo">
-                Placeholder Logo
-            </div>
-            <nav>
-                <ul>
-                    <li>Dashboard</li>
-                    <li>Team</li>
-                </ul>
-            </nav>
-            <section id="project-container">
-                <h2>TO-DO</h2>
-                <ul id="project-list">
-                    <li>Inbox</li>
-                    <li>Work</li>
-                    <li>Hobby Project</li>
-                </ul>
-                <form action="" id="new-project-form">
-                    <input type="text" id="project-title" placeholder="Title">
-                    <button type="button" id="new-project-btn">Add Project</button>
-                </form>
-            </section>
-        </div>
-    </div>
+    <main>
+        <section>
+            <h3>Projects</h3>
+            <ul id="project-list">
+                <li>Inbox</li>
+                <li>Work</li>
+                <li>Errands</li>
+                <li>Food Prep</li>
+            </ul>
+            <form action="" id="add-project-form">
+                <div><input type="text" id="project-title" placeholder="Project name" /></div>
+                <div>
+                    <button type="button" id="add-project-btn">Add Project</button>
+                </div>
+            </form>
+        </section>
+        <section>
+            <h2 id="project-name">Project Name</h2>
+            <ul id="task-list">
+                <li>Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li>
+            </ul>
+            <form action="" id="add-task-form">
+                <div><input type="text" id="task-title" placeholder="Task name" /></div>
+                <div><textarea id="task-description" placeholder="Description" rows="3"></textarea></div>
+                <div>
+                    <input id="task-due-date" type="date">
+                    <select id="task-priority" name="priority" id="priority">
+                        <option value="priority1">Priority 1</option>
+                        <option value="priority2">Priority 2</option>
+                        <option value="priority3">Priority 3</option>
+                        <option value="priority4">Priority 4</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" id="add-task-btn">Add Task</button>
+                </div>
+            </form>
+            <button type="button" id="show-task-form-btn">+ Add Task</button>
+
+        </section>
+    </main>
 </body>
 
 </html>

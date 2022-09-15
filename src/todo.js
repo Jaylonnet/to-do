@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-export const ToDoItem = (id, title, description, dueDate, priority) => {
+export const Task = (id, title, description, dueDate, priority) => {
 
     let completed = false;
 
