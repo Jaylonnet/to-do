@@ -1,6 +1,6 @@
 import './style.css';
 import { counter } from './counter';
-import { displayProject, displayTask, removeProjectFromDOM, changeText } from './dom';
+import { displayProject, displayTask, removeFromDOM, changeText } from './dom';
 import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
@@ -63,7 +63,7 @@ function deleteProject(projectId) {
     let project = projects.find(project => project.id === projectId);
     const index = projects.indexOf(project);
     projects.splice(index, 1);
-    removeProjectFromDOM(project.id)
+    removeFromDOM(project.id, "project")
 };
 
 function resetForm(form) {
@@ -84,7 +84,16 @@ function createTask() {
         taskForm.elements['task-due-date'].value,
         taskForm.elements['task-priority'].value,
     );
-    
+
     displayTask(task);
+
+    const deleteTaskBtn = document.querySelector(`li[data-task-id="${task.id}"] .delete-task`);
+    deleteTaskBtn.addEventListener('click', () => {
+        deleteTask(task.id)
+    });
     resetForm(taskForm);
 };
+
+function deleteTask(taskId) {
+    removeFromDOM(taskId, "task")
+}
