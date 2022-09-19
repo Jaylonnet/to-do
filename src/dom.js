@@ -3,7 +3,7 @@ const taskList = document.querySelector('#task-list')
 
 
 export function displayProject(project) {
-    const li =  document.createElement('li');
+    const li = document.createElement('li');
     li.dataset.projectId = project.id;
     li.textContent = project.title;
 
@@ -25,7 +25,7 @@ export function displayTask(task, selectedProject) {
     const li = document.createElement('li');
     li.dataset.taskId = task.id;
     li.dataset.projectId = selectedProject.id;
-    
+
     const taskTitle = document.createElement('span');
     taskTitle.textContent = task.title;
 
@@ -38,13 +38,23 @@ export function displayTask(task, selectedProject) {
     const taskPriority = document.createElement('span');
     taskPriority.textContent = task.priority;
 
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-task');
+
+    const editBtn = document.createElement('button');
+    editBtn.textContent = 'Edit';
+    editBtn.classList.add('edit-task');
+
     li.append(
         taskTitle,
         taskDescription,
         taskDueDate,
-        taskPriority
-        );
-    
+        taskPriority,
+        editBtn,
+        deleteBtn,
+    );
+
     taskList.append(li);
 }
 
