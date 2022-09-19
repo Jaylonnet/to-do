@@ -21,10 +21,10 @@ export function removeProjectFromDOM(projectId) {
     document.querySelector(`li[data-project-id="${projectId}"]`).remove();
 };
 
-export function displayTask(task, selectedProject) {
+export function displayTask(task) {
     const li = document.createElement('li');
     li.dataset.taskId = task.id;
-    li.dataset.projectId = selectedProject.id;
+    li.dataset.projectId = task.projectId;
 
     const taskTitle = document.createElement('span');
     taskTitle.textContent = task.title;
