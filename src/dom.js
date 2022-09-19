@@ -1,4 +1,5 @@
 const projectList = document.querySelector('#project-list');
+const taskList = document.querySelector('#task-list')
 
 
 export function displayProject(project) {
@@ -18,6 +19,33 @@ export function displayProject(project) {
 
 export function removeProjectFromDOM(projectId) {
     document.querySelector(`li[data-project-id="${projectId}"]`).remove();
+};
+
+export function displayTask(task, selectedProject) {
+    const li = document.createElement('li');
+    li.dataset.taskId = task.id;
+    li.dataset.projectId = selectedProject.id;
+    
+    const taskTitle = document.createElement('span');
+    taskTitle.textContent = task.title;
+
+    const taskDescription = document.createElement('span');
+    taskDescription.textContent = task.description;
+
+    const taskDueDate = document.createElement('span');
+    taskDueDate.textContent = task.dueDate;
+
+    const taskPriority = document.createElement('span');
+    taskPriority.textContent = task.priority;
+
+    li.append(
+        taskTitle,
+        taskDescription,
+        taskDueDate,
+        taskPriority
+        );
+    
+    taskList.append(li);
 }
 
 export function changeText(projectName, node) {
