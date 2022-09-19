@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-export const Task = (id, title, description, dueDate, priority) => {
+export const Task = (id, projectId, title, description, dueDate, priority) => {
 
     let completed = false;
 
@@ -8,6 +8,8 @@ export const Task = (id, title, description, dueDate, priority) => {
 
     return {
         get id() { return id },
+
+        get projectId() { return projectId },
 
         get title() { return title },
         set title(value) { title = value },
