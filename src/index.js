@@ -1,7 +1,7 @@
 import './style.css';
-import {counter} from './counter';
-import {displayProject, displayTask, removeProjectFromDOM, changeText} from './dom';
-import {Task, Project} from './todo';
+import { counter } from './counter';
+import { displayProject, displayTask, removeProjectFromDOM, changeText } from './dom';
+import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
 // Init unique ID counters
@@ -30,7 +30,7 @@ addProjectBtn.addEventListener('click', createProject);
 addTaskBtn.addEventListener('click', createTask);
 
 // Functions
-(function setCurrentYear() {taskForm.querySelector('#task-due-date').value = format(new Date(), "yyyy-MM-dd")})();
+(function setCurrentYear() { taskForm.querySelector('#task-due-date').value = format(new Date(), "yyyy-MM-dd") })();
 
 function createProject() {
     const project = Project(
@@ -51,8 +51,8 @@ function createProject() {
         e.stopPropagation();
     });
 
-    const taskItemElement = document.querySelector(`li[data-project-id="${project.id}"]`);
-    taskItemElement.addEventListener('click', function (e) {
+    const projectItemElement = document.querySelector(`li[data-project-id="${project.id}"]`);
+    projectItemElement.addEventListener('click', function (e) {
         setSelectedProject(project);
     });
 
@@ -67,7 +67,7 @@ function deleteProject(projectId) {
 };
 
 function resetForm(form) {
-    for (let formField of form.elements) {formField.value = ''};
+    for (let formField of form.elements) { formField.value = '' };
 };
 
 function setSelectedProject(project) {
@@ -78,12 +78,13 @@ function setSelectedProject(project) {
 function createTask() {
     const task = Task(
         taskCounter.getUniqueId(),
+        selectedProject.id,
         taskForm.elements['task-title'].value,
         taskForm.elements['task-description'].value,
         taskForm.elements['task-due-date'].value,
         taskForm.elements['task-priority'].value,
-        );
+    );
     
-    displayTask(task, selectedProject);
+    displayTask(task);
     resetForm(taskForm);
 };
