@@ -1,6 +1,6 @@
 import './style.css';
 import {counter} from './counter';
-import {displayProject, removeProjectFromDOM, changeText} from './dom';
+import {displayProject, displayTask, removeProjectFromDOM, changeText} from './dom';
 import {Task, Project} from './todo';
 
 // Init unique ID counters
@@ -80,6 +80,7 @@ function createTask() {
         taskForm.elements['task-due-date'].value,
         taskForm.elements['task-priority'].value,
         );
-
+    
+    displayTask(task, selectedProject);
     resetForm(taskForm);
 };
