@@ -2,6 +2,7 @@ import './style.css';
 import {counter} from './counter';
 import {displayProject, displayTask, removeProjectFromDOM, changeText} from './dom';
 import {Task, Project} from './todo';
+import { formatDistance, format } from 'date-fns';
 
 // Init unique ID counters
 const taskCounter = counter();
@@ -29,6 +30,8 @@ addProjectBtn.addEventListener('click', createProject);
 addTaskBtn.addEventListener('click', createTask);
 
 // Functions
+(function setCurrentYear() {taskForm.querySelector('#task-due-date').value = format(new Date(), "yyyy-MM-dd")})();
+
 function createProject() {
     const project = Project(
         taskCounter.getUniqueId(),
