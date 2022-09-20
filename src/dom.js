@@ -17,8 +17,12 @@ export function displayProject(project) {
     projectList.append(li);
 };
 
-export function removeProjectFromDOM(projectId) {
-    document.querySelector(`li[data-project-id="${projectId}"]`).remove();
+export function removeFromDOM(id, type) {
+    if (type == 'project') {
+        document.querySelector(`li[data-project-id="${id}"]`).remove();
+    } else if (type == 'task' ) {
+        document.querySelector(`li[data-task-id="${id}"]`).remove();
+    }
 };
 
 export function displayTask(task) {
@@ -28,9 +32,6 @@ export function displayTask(task) {
 
     const taskTitle = document.createElement('span');
     taskTitle.textContent = task.title;
-
-    const taskDescription = document.createElement('span');
-    taskDescription.textContent = task.description;
 
     const taskDueDate = document.createElement('span');
     taskDueDate.textContent = task.dueDate;
@@ -48,7 +49,6 @@ export function displayTask(task) {
 
     li.append(
         taskTitle,
-        taskDescription,
         taskDueDate,
         taskPriority,
         editBtn,
@@ -61,3 +61,16 @@ export function displayTask(task) {
 export function changeText(projectName, node) {
     node.textContent = projectName;
 };
+
+export function showTasks(projectId) {
+    taskList.querySelectorAll('li').forEach((task) => {
+        task.style.display = 'none';
+    });
+
+    taskList.querySelectorAll(`li[data-project-id="${projectId}"]`).forEach((task) => {
+        task.style.display = 'block';
+    });
+
+
+
+}
