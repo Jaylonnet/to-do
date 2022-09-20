@@ -1,6 +1,6 @@
 import './style.css';
 import { counter } from './counter';
-import { displayProject, displayTask, removeFromDOM, changeText, showTasks } from './dom';
+import { displayProject, displayTask, removeFromDOM, changeText, showTasks, showTaskEditForm } from './dom';
 import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
@@ -17,6 +17,8 @@ const projects = [];
 // Get Forms
 const projectForm = document.querySelector('#add-project-form');
 const taskForm = document.querySelector('#add-task-form');
+const editProjectForm = document.querySelector('#edit-project-form');
+const editTaskForm = document.querySelector('#edit-task-form');
 
 // Get Buttons
 const addProjectBtn = document.querySelector('#add-project-btn');
@@ -88,7 +90,14 @@ function createTask() {
 
     displayTask(task);
 
-    const deleteTaskBtn = document.querySelector(`li[data-task-id="${task.id}"] .delete-task`);
+    const taskElement = document.querySelector(`li[data-task-id="${task.id}"]`);
+
+    const taskTitleElement = taskElement.querySelector('span');
+    taskTitleElement.addEventListener('click', () => {
+        editTask(task);
+    });
+
+    const deleteTaskBtn = taskElement.querySelector(`.delete-task`);
     deleteTaskBtn.addEventListener('click', () => {
         deleteTask(task.id)
     });
@@ -97,4 +106,8 @@ function createTask() {
 
 function deleteTask(taskId) {
     removeFromDOM(taskId, "task")
+};
+
+function editTask(task) {
+    showTaskEditForm(editTaskForm, task);
 };

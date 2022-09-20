@@ -66,3 +66,16 @@ export function showTasks(projectId) {
         task.style.display = 'block';
     });
 };
+
+export function showTaskEditForm(form, task) {
+    if (form.classList.contains('hide')) {
+        form.classList.remove('hide');
+    };
+
+    form.dataset.taskId = task.id;
+
+    form.elements['task-title'].value = task.title;
+    form.elements['task-description'].value = task.description;
+    form.elements['task-due-date'].value = task.dueDate;
+    form.elements['task-priority'].value = task.priority;
+};
