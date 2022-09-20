@@ -1,6 +1,6 @@
 import './style.css';
 import { counter } from './counter';
-import { displayProject, displayTask, removeFromDOM, changeText } from './dom';
+import { displayProject, displayTask, removeFromDOM, changeText, showTasks } from './dom';
 import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
@@ -72,7 +72,8 @@ function resetForm(form) {
 
 function setSelectedProject(project) {
     selectedProject = project;
-    changeText(project.title, projectHeading)
+    changeText(project.title, projectHeading);
+    showTasks(selectedProject.id);
 };
 
 function createTask() {
