@@ -20,9 +20,9 @@ export function displayProject(project) {
 export function removeFromDOM(id, type) {
     if (type == 'project') {
         document.querySelector(`li[data-project-id="${id}"]`).remove();
-    } else if (type == 'task' ) {
+    } else if (type == 'task') {
         document.querySelector(`li[data-task-id="${id}"]`).remove();
-    }
+    };
 };
 
 export function displayTask(task) {
@@ -65,7 +65,4 @@ export function showTasks(projectId) {
     taskList.querySelectorAll(`li[data-project-id="${projectId}"]`).forEach((task) => {
         task.style.display = 'block';
     });
-
-
-
-}
+};

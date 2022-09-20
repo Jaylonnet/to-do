@@ -97,4 +97,4 @@ function createTask() {
 
 function deleteTask(taskId) {
     removeFromDOM(taskId, "task")
-}
+};
