@@ -17,12 +17,8 @@ export function displayProject(project) {
     projectList.append(li);
 };
 
-export function removeFromDOM(id, type) {
-    if (type == 'project') {
-        document.querySelector(`li[data-project-id="${id}"]`).remove();
-    } else if (type == 'task' ) {
-        document.querySelector(`li[data-task-id="${id}"]`).remove();
-    }
+export function removeProjectFromDOM(projectId) {
+    document.querySelector(`li[data-project-id="${projectId}"]`).remove();
 };
 
 export function displayTask(task) {
