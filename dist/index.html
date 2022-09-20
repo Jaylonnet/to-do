@@ -20,6 +20,13 @@
                     <button type="button" id="add-project-btn">Add Project</button>
                 </div>
             </form>
+
+            <form action="" id="edit-project-form" class="hide">
+                <div><input type="text" id="project-title" /></div>
+                <div>
+                    <button type="button" id="edit-project-btn">Save Changes</button>
+                </div>
+            </form>
         </section>
         <section>
             <h2 id="project-name">Project Name</h2>
@@ -39,6 +46,23 @@
                 </div>
                 <div>
                     <button type="button" id="add-task-btn">Add Task</button>
+                </div>
+            </form>
+
+            <form action="" id="edit-task-form" class="hide">
+                <div><input type="text" id="task-title" /></div>
+                <div><textarea id="task-description" rows="3"></textarea></div>
+                <div>
+                    <input id="task-due-date" type="date">
+                    <select id="task-priority" name="priority" id="priority">
+                        <option value="priority1">Priority 1</option>
+                        <option value="priority2">Priority 2</option>
+                        <option value="priority3">Priority 3</option>
+                        <option value="priority4">Priority 4</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" id="edit-task-btn">Save Changes</button>
                 </div>
             </form>
 
