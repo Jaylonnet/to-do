@@ -43,15 +43,10 @@ export function displayTask(task) {
     deleteBtn.textContent = 'Delete';
     deleteBtn.classList.add('delete-task');
 
-    const editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
-    editBtn.classList.add('edit-task');
-
     li.append(
         taskTitle,
         taskDueDate,
         taskPriority,
-        editBtn,
         deleteBtn,
     );
 
