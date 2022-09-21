@@ -1,6 +1,6 @@
 import './style.css';
 import { counter } from './counter';
-import { displayProject, displayTask, removeFromDOM, changeText, showTasks, showTaskEditForm } from './dom';
+import { displayProject, displayTask, removeFromDOM, changeText, showTasks, showTaskEditForm, resetForm } from './dom';
 import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
@@ -68,10 +68,6 @@ function deleteProject(projectId) {
     removeFromDOM(project.id, "project")
 };
 
-function resetForm(form) {
-    for (let formField of form.elements) { formField.value = '' };
-};
-
 function setSelectedProject(project) {
     selectedProject = project;
     changeText(project.title, projectHeading);
@@ -109,5 +105,22 @@ function deleteTask(taskId) {
 };
 
 function editTask(task) {
-    showTaskEditForm(editTaskForm, task);
+    const saveTaskChangesBtn = editTaskForm.querySelector('#edit-task-btn');
+    saveTaskChangesBtn.addEventListener('click', () => {
+        updateTask(
+            task,
+            taskForm.elements['task-title'].value,
+            taskForm.elements['task-description'].value,
+            taskForm.elements['task-due-date'].value,
+            taskForm.elements['task-priority'].value
+        );
+    });
+};
+
+function updateTask(task, taskTitle, taskDescription, taskDueDate, taskPriority) {
+    task.title = taskTitle;
+    task.description = taskDescription;
+    task.dueDate = taskDueDate;
+    task.priority = taskPriority;
+    resetForm(editTaskForm);
 };
