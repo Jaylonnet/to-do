@@ -1,6 +1,6 @@
 import './style.css';
 import { counter } from './counter';
-import { displayProject, displayTask, removeFromDOM, changeText, showTasks, resetForm } from './dom';
+import { displayProject, displayTask, removeFromDOM, changeText, showTasks, resetForm, showEditTaskForm, updateTaskInDOM } from './dom';
 import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
@@ -90,7 +90,9 @@ function createTask() {
     const taskElement = document.querySelector(`li[data-task-id="${task.id}"]`);
 
     const taskTitleElement = taskElement.querySelector('span:nth-child(1)');
-    taskTitleElement.addEventListener('click', () => {})
+    taskTitleElement.addEventListener('click', () => {
+        editTask(task, taskElement);
+    })
 
     const deleteTaskBtn = taskElement.querySelector(`.delete-task`);
     deleteTaskBtn.addEventListener('click', () => {
@@ -101,4 +103,19 @@ function createTask() {
 
 function deleteTask(taskId) {
     removeFromDOM(taskId, "task")
+};
+
+function editTask(task, taskElement) {
+    showEditTaskForm(task, editTaskForm);
+    function saveTaskChanges () {
+        task.title = editTaskForm.elements['task-title'].value;
+        task.description = editTaskForm.elements['task-description'].value;
+        task.dueDate = editTaskForm.elements['task-due-date'].value;
+        task.priority = editTaskForm.elements['task-priority'].value;
+        saveTaskChangesBtn.removeEventListener('click', saveTaskChanges);
+        updateTaskInDOM(task, taskElement);
+        resetForm(editTaskForm)
+    };
+
+    saveTaskChangesBtn.addEventListener('click', saveTaskChanges)
 };

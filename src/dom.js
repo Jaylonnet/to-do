@@ -70,3 +70,21 @@ export function showTasks(projectId) {
 export function resetForm(form) {
     for (let formField of form.elements) { formField.value = '' };
 };
+
+export function showEditTaskForm(task, editTaskForm) {
+    editTaskForm.elements['task-title'].value = task.title;
+    editTaskForm.elements['task-description'].value = task.description;
+    editTaskForm.elements['task-due-date'].value = task.dueDate;
+    editTaskForm.elements['task-priority'].value = task.priority;
+};
+
+export function updateTaskInDOM(task, taskElement) {
+    const taskTitleSpan = taskElement.querySelector('span:nth-child(1)');
+    taskTitleSpan.textContent = task.title;
+
+    const taskDueDateSpan = taskElement.querySelector('span:nth-child(2)');
+    taskDueDateSpan.textContent = task.dueDate;
+
+    const taskPrioritySpan = taskElement.querySelector('span:nth-child(3)');
+    taskPrioritySpan.textContent = task.priority;
+};
