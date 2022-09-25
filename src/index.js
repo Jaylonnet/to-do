@@ -1,6 +1,6 @@
 import './style.css';
 import { counter } from './counter';
-import { displayProject, displayTask, removeFromDOM, changeText, showTasks, showTaskEditForm, resetForm } from './dom';
+import { displayProject, displayTask, removeFromDOM, changeText, showTasks, resetForm } from './dom';
 import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
@@ -23,6 +23,7 @@ const editTaskForm = document.querySelector('#edit-task-form');
 // Get Buttons
 const addProjectBtn = document.querySelector('#add-project-btn');
 const addTaskBtn = document.querySelector('#add-task-btn');
+const saveTaskChangesBtn = editTaskForm.querySelector('#edit-task-btn');
 
 // Get Project Heading
 const projectHeading = document.querySelector('#project-name');
@@ -88,10 +89,8 @@ function createTask() {
 
     const taskElement = document.querySelector(`li[data-task-id="${task.id}"]`);
 
-    const taskTitleElement = taskElement.querySelector('span');
-    taskTitleElement.addEventListener('click', () => {
-        editTask(task);
-    });
+    const taskTitleElement = taskElement.querySelector('span:nth-child(1)');
+    taskTitleElement.addEventListener('click', () => {})
 
     const deleteTaskBtn = taskElement.querySelector(`.delete-task`);
     deleteTaskBtn.addEventListener('click', () => {
@@ -102,25 +101,4 @@ function createTask() {
 
 function deleteTask(taskId) {
     removeFromDOM(taskId, "task")
-};
-
-function editTask(task) {
-    const saveTaskChangesBtn = editTaskForm.querySelector('#edit-task-btn');
-    saveTaskChangesBtn.addEventListener('click', () => {
-        updateTask(
-            task,
-            taskForm.elements['task-title'].value,
-            taskForm.elements['task-description'].value,
-            taskForm.elements['task-due-date'].value,
-            taskForm.elements['task-priority'].value
-        );
-    });
-};
-
-function updateTask(task, taskTitle, taskDescription, taskDueDate, taskPriority) {
-    task.title = taskTitle;
-    task.description = taskDescription;
-    task.dueDate = taskDueDate;
-    task.priority = taskPriority;
-    resetForm(editTaskForm);
 };
