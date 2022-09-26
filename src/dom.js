@@ -14,7 +14,9 @@ export function displayProject(project) {
     deleteBtn.classList.add('delete-project');
 
     const editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
+    const editIcon = document.createElement('i');
+    editIcon.classList.add('fa-solid', 'fa-pencil');
+    editBtn.append(editIcon)
     editBtn.classList.add('edit-project');
 
     li.append(projectTitle, editBtn, deleteBtn);
