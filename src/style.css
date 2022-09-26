@@ -49,6 +49,11 @@ table {
 
 /**************************/
 
+body {
+    font-family: 'Roboto', sans-serif;
+
+}
+
 .container {
     height: 100vh;
     display: grid;
@@ -56,10 +61,19 @@ table {
     grid-template-rows: 80px 8fr 80px;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 header {
     grid-column: 1/3;
     grid-row: 1/2;
     background: #27ae60;
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 500;
 }
 
 #project-section {
@@ -73,4 +87,31 @@ header {
 footer {
     background: #222222;
     grid-column: 1/3;
+    color: rgb(119, 119, 119);
+}
+
+#project-section {
+    padding: 20px;
+}
+
+#project-list li {
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+#project-list li:hover {
+    background-color: #e6e6e6;
+}
+
+#project-list li {
+    display: flex;
+    align-items: center;
+}
+
+#project-list li span:nth-child(1) {
+    flex: 1;
+}
+
+button {
+    cursor: pointer;
 }
