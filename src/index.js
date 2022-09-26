@@ -1,6 +1,6 @@
 import './style.css';
 import { counter } from './counter';
-import { displayProject, displayTask, removeFromDOM, changeText, showTasks, resetForm, showEditTaskForm, updateTaskInDOM } from './dom';
+import { displayProject, displayTask, removeFromDOM, changeText, showTasks, resetForm, showEditTaskForm, showEditProjectForm, updateTaskInDOM, updateProjectInDOM } from './dom';
 import { Task, Project } from './todo';
 import { formatDistance, format } from 'date-fns';
 
@@ -24,6 +24,7 @@ const editTaskForm = document.querySelector('#edit-task-form');
 const addProjectBtn = document.querySelector('#add-project-btn');
 const addTaskBtn = document.querySelector('#add-task-btn');
 const saveTaskChangesBtn = editTaskForm.querySelector('#edit-task-btn');
+const saveProjectChangesBtn = editProjectForm.querySelector('#edit-project-btn');
 
 // Get Project Heading
 const projectHeading = document.querySelector('#project-name');
@@ -58,6 +59,13 @@ function createProject() {
     projectItemElement.addEventListener('click', function (e) {
         setSelectedProject(project);
     });
+
+    const projectTitleElement = projectItemElement.querySelector('span:nth-child(1)')
+
+    const editProjectBtn = projectItemElement.querySelector('.edit-project');
+    editProjectBtn.addEventListener('click', () => {
+        editProject(project, projectTitleElement);
+    })
 
     resetForm(projectForm);
 };
@@ -118,4 +126,17 @@ function editTask(task, taskElement) {
     };
 
     saveTaskChangesBtn.addEventListener('click', saveTaskChanges)
+};
+
+function editProject(project, projectElement) {
+    showEditProjectForm(project, editProjectForm);
+    function saveProjectChanges () {
+        project.title = editProjectForm.elements['project-title'].value;
+
+        saveProjectChangesBtn.removeEventListener('click', saveProjectChanges);
+        updateProjectInDOM(project, projectElement);
+        resetForm(editProjectForm)
+    };
+
+    saveProjectChangesBtn.addEventListener('click', saveProjectChanges)
 };

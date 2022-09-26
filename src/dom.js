@@ -5,13 +5,19 @@ const taskList = document.querySelector('#task-list')
 export function displayProject(project) {
     const li = document.createElement('li');
     li.dataset.projectId = project.id;
-    li.textContent = project.title;
+
+    const projectTitle = document.createElement('span');
+    projectTitle.textContent = project.title;
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.classList.add('delete-project');
 
-    li.append(deleteBtn);
+    const editBtn = document.createElement('button');
+    editBtn.textContent = 'Edit';
+    editBtn.classList.add('edit-project');
+
+    li.append(projectTitle, editBtn, deleteBtn);
 
 
     projectList.append(li);
@@ -78,6 +84,10 @@ export function showEditTaskForm(task, editTaskForm) {
     editTaskForm.elements['task-priority'].value = task.priority;
 };
 
+export function showEditProjectForm(project, editProjectForm) {
+    editProjectForm.elements['project-title'].value = project.title;
+};
+
 export function updateTaskInDOM(task, taskElement) {
     const taskTitleSpan = taskElement.querySelector('span:nth-child(1)');
     taskTitleSpan.textContent = task.title;
@@ -87,4 +97,8 @@ export function updateTaskInDOM(task, taskElement) {
 
     const taskPrioritySpan = taskElement.querySelector('span:nth-child(3)');
     taskPrioritySpan.textContent = task.priority;
+};
+
+export function updateProjectInDOM(project, projectElement) {
+    projectElement.textContent = project.title;
 };
