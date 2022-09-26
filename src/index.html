@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <header>
+        <header class="center">
             <div id="logo">What To Do?</div>
         </header>
         <section id="project-section">
@@ -24,7 +27,7 @@
                 </div>
             </form>
 
-            <form action="" id="edit-project-form">
+            <form action="" id="edit-project-form" style="display: none;">
                 <div><input type="text" id="project-title" /></div>
                 <div>
                     <button type="button" id="edit-project-btn">Save Changes</button>
@@ -52,7 +55,7 @@
                 </div>
             </form>
 
-            <form action="" id="edit-task-form">
+            <form action="" id="edit-task-form" style="display: none">
                 <div><input type="text" id="task-title" /></div>
                 <div><textarea id="task-description" rows="3"></textarea></div>
                 <div>
@@ -70,7 +73,7 @@
             </form>
 
         </section>
-        <footer>Created by Jaylon Wingfield</footer>
+        <footer class="center">Created by Jaylon Wingfield</footer>
     </div>
 </body>
 
